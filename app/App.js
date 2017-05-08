@@ -6,24 +6,20 @@ import withState from 'recompose/withState';
 import renderComponent from 'recompose/renderComponent';
 import branch from 'recompose/branch';
 import { TouchableHighlight, Button, StyleSheet, Text, View } from 'react-native';
-import identity from 'lodash/identity';
+mport identity from 'lodash/identity';
+import SubmitLink from './SubmitLink';
 
 
 const App = () => (
-  <View>
-    <Text>The Main View</Text>
-  </View>
+  <SubmitLink />
 );
 
 const rootHoc = compose(
   withState('isLoggedIn', 'setLoggedIn', false),
+  withState('isLoading', 'setIsLoading', false),
   withState('location', 'setLocation', false),
   branch(
-    ({isLoggedIn}) => {
-      console.log('yoyoyo');
-      console.log('is logged in', isLoggedIn);
-      return isLoggedIn;
-    },
+    ({isLoggedIn}) => isLoggedIn,
     identity,
     renderComponent(Login)
   )

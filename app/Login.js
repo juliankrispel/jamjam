@@ -42,5 +42,5 @@ const Login = ({ login, setLoggedIn }) => {
 };
 
 export default withHandlers({
-  login: props => event => loginWithFacebook(),
+  login: ({ setLoggedIn }) => event => loginWithFacebook(setLoggedIn),
 })(Login);

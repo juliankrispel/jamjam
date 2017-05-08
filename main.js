@@ -1,8 +1,15 @@
 import Expo from 'expo';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import dotenv from 'dotenv';
+dotenv.config();
+import { loginWithFacebook } from './lib/auth'
 
 class App extends React.Component {
+  componentDidMount() {
+    loginWithFacebook();
+  }
+
   render() {
     return (
       <View style={styles.container}>
